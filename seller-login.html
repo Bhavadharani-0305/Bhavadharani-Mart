@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Login | Bhavadharani Mart</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="seller-login-page">
+
+        <section class="seller-login-box">
+
+            <div class="seller-brand">
+                <div class="seller-mark">B</div>
+
+                <div>
+                    <h1>Bhavadharani Mart</h1>
+                    <p>SELLER CENTRE</p>
+                </div>
+            </div>
+
+
+            <div class="seller-heading">
+
+                <p class="seller-label">SELLER ACCOUNT</p>
+
+                <h2>Grow your business.</h2>
+
+                <p>
+                    Sign in to manage your products, orders,
+                    sales and marketplace activity.
+                </p>
+
+            </div>
+
+
+            <form id="sellerLoginForm">
+
+                <div class="seller-form-group">
+
+                    <label for="sellerEmail">
+                        Seller Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="sellerEmail"
+                        placeholder="Enter your seller email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="seller-form-group">
+
+                    <label for="sellerPassword">
+                        Password
+                    </label>
+
+                    <div class="seller-password-box">
+
+                        <input
+                            type="password"
+                            id="sellerPassword"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="toggleSellerPassword"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="seller-options">
+
+                    <label>
+                        <input type="checkbox">
+                        Remember me
+                    </label>
+
+                    <a href="#" id="sellerForgotPassword">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="seller-login-button"
+                >
+                    Seller Login
+                </button>
+
+            </form>
+
+
+            <div class="seller-divider">
+                <span>SELLER ACCESS</span>
+            </div>
+
+
+            <div class="seller-note">
+                <span>✓</span>
+
+                <p>
+                    This is a frontend demo.
+                    Seller authentication is not connected
+                    to a real database yet.
+                </p>
+            </div>
+
+
+            <a href="index.html" class="seller-back-link">
+                ← Back to role selection
+            </a>
+
+
+            <p id="sellerLoginMessage" class="seller-login-message"></p>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
