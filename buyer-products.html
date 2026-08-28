@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buyer Products | Bhavadharani Mart</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="seller-dashboard">
+
+        <section class="dashboard-header">
+            <p>BUYER SHOPPING</p>
+
+            <h1>Browse Products</h1>
+
+            <p>
+                Choose your favorite products and add them to your cart.
+            </p>
+        </section>
+
+
+        <section class="dashboard-cards">
+
+            <!-- Ice Cream -->
+            <div class="dashboard-card">
+                <h2>Ice Cream</h2>
+
+                <h3>₹100</h3>
+
+                <p>Fresh and delicious ice cream.</p>
+
+                <p>
+                    Available Quantity: 10
+                </p>
+
+                <button onclick="addToCart('Ice Cream', 100)">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <!-- Chocolate -->
+            <div class="dashboard-card">
+                <h2>Chocolate</h2>
+
+                <h3>₹80</h3>
+
+                <p>Rich and tasty chocolate.</p>
+
+                <p>
+                    Available Quantity: 20
+                </p>
+
+                <button onclick="addToCart('Chocolate', 80)">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <!-- Milk -->
+            <div class="dashboard-card">
+                <h2>Milk</h2>
+
+                <h3>₹60</h3>
+
+                <p>Fresh and healthy milk.</p>
+
+                <p>
+                    Available Quantity: 15
+                </p>
+
+                <button onclick="addToCart('Milk', 60)">
+                    Add to Cart
+                </button>
+            </div>
+
+        </section>
+
+
+        <br>
+
+        <section>
+            <button onclick="window.location.href='cart.html'">
+                View My Cart
+            </button>
+        </section>
+
+        <br>
+
+        <a href="buyer-dashboard.html">
+            ← Back to Buyer Dashboard
+        </a>
+
+    </main>
+
+
+    <script>
+        function addToCart(productName, price) {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.push({
+                name: productName,
+                price: price,
+                quantity: 1
+            });
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            alert(productName + " added to your cart!");
+        }
+    </script>
+
+</body>
+</html>
