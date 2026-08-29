@@ -128,7 +128,9 @@ if (sellerForm && sellerMessage) {
 
         sellerMessage.textContent =
             "Seller login successful! Welcome to Bhavadharani Mart!";
-
+        setTimeout(function () {
+         window.location.href = "seller-dashboard.html";
+        }, 1000);
     });
 
 }
