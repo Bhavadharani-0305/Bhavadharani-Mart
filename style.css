@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 * {
     margin: 0;
     padding: 0;
@@ -1034,6 +1037,7 @@ footer {
     .dashboard-actions button {
         width: 100%;
     }
+<<<<<<< HEAD
 }
 .products-container {
     display: flex;
@@ -1047,3 +1051,6 @@ footer {
     flex: 1;
     width: 33.33%;
 }
+=======
+}
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c

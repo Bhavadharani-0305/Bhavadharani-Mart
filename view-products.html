@@ -7,6 +7,7 @@
     <title>View Products | Bhavadharani Mart</title>
 
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
 
     <style>
         .product-card {
@@ -33,6 +34,8 @@
             font-weight: bold;
         }
     </style>
+=======
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 </head>
 
 <body>
@@ -54,7 +57,27 @@
 
         <section class="dashboard-cards" id="productsContainer">
 
+<<<<<<< HEAD
             <p>Loading products...</p>
+=======
+            <div class="dashboard-card">
+                <h3>Ice Cream</h3>
+                <p>₹100</p>
+                <span>Quantity: 10</span>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Chocolate</h3>
+                <p>₹80</p>
+                <span>Quantity: 20</span>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Milk</h3>
+                <p>₹60</p>
+                <span>Quantity: 15</span>
+            </div>
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 
         </section>
 
@@ -70,6 +93,7 @@
 
     <script>
 
+<<<<<<< HEAD
         function deleteProduct(id) {
 
             if (!confirm("Are you sure you want to delete this product?")) {
@@ -219,6 +243,34 @@
 
             });
 
+=======
+        const productsContainer =
+            document.getElementById("productsContainer");
+
+        const savedProduct =
+            localStorage.getItem("product");
+
+        if (savedProduct) {
+
+            const product =
+                JSON.parse(savedProduct);
+
+            const productCard =
+                document.createElement("div");
+
+            productCard.className =
+                "dashboard-card";
+
+            productCard.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>₹${product.price}</p>
+                <span>Quantity: ${product.quantity}</span>
+            `;
+
+            productsContainer.appendChild(productCard);
+        }
+
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
     </script>
 
 </body>

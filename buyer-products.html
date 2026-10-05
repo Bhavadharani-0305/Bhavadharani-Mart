@@ -7,6 +7,7 @@
     <title>Buyer Products | Bhavadharani Mart</title>
 
     <link rel="stylesheet" href="style.css">
+<<<<<<< HEAD
 
     <style>
         button {
@@ -39,6 +40,26 @@
     </style>
 </head>
 
+=======
+</head>
+
+<style>
+button {
+    background-color: #2f6b4f;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #24543e;
+}
+</style>
+
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 <body>
 
     <main class="seller-dashboard">
@@ -53,6 +74,7 @@
             </p>
         </section>
 
+<<<<<<< HEAD
         <!-- Products from MySQL -->
         <section class="dashboard-cards" id="products">
 
@@ -60,6 +82,67 @@
 
         </section>
 
+=======
+
+        <section class="dashboard-cards">
+
+            <!-- Ice Cream -->
+            <div class="dashboard-card">
+                <h2>Ice Cream</h2>
+
+                <h3>₹100</h3>
+
+                <p>Fresh and delicious ice cream.</p>
+
+                <p>
+                    Available Quantity: 10
+                </p>
+
+                <button onclick="addToCart('Ice Cream', 100)">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <!-- Chocolate -->
+            <div class="dashboard-card">
+                <h2>Chocolate</h2>
+
+                <h3>₹80</h3>
+
+                <p>Rich and tasty chocolate.</p>
+
+                <p>
+                    Available Quantity: 20
+                </p>
+
+                <button onclick="addToCart('Chocolate', 80)">
+                    Add to Cart
+                </button>
+            </div>
+
+
+            <!-- Milk -->
+            <div class="dashboard-card">
+                <h2>Milk</h2>
+
+                <h3>₹60</h3>
+
+                <p>Fresh and healthy milk.</p>
+
+                <p>
+                    Available Quantity: 15
+                </p>
+
+                <button onclick="addToCart('Milk', 60)">
+                    Add to Cart
+                </button>
+            </div>
+
+        </section>
+
+
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
         <br>
 
         <section>
@@ -78,6 +161,7 @@
 
 
     <script>
+<<<<<<< HEAD
 
         // Load products from Spring Boot API
         fetch("http://localhost:8080/api/products")
@@ -144,6 +228,11 @@
 
             let cart =
                 JSON.parse(localStorage.getItem("cart")) || [];
+=======
+        function addToCart(productName, price) {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 
             cart.push({
                 name: productName,
@@ -151,6 +240,7 @@
                 quantity: 1
             });
 
+<<<<<<< HEAD
             localStorage.setItem(
                 "cart",
                 JSON.stringify(cart)
@@ -159,6 +249,12 @@
             alert(productName + " added to your cart!");
         }
 
+=======
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            alert(productName + " added to your cart!");
+        }
+>>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
     </script>
 
 </body>
