@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart | Bhavadharani Mart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .cart-item {
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .cart-item h3 {
+            margin-bottom: 8px;
+        }
+
+        .cart-item p {
+            margin: 5px 0;
+        }
+
+        .remove-button {
+            background-color: #c0392b;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .remove-button:hover {
+            background-color: #962d22;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            padding: 18px;
+            border-radius: 10px;
+            background-color: #eef7f1;
+        }
+
+        .empty-cart {
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="seller-dashboard">
+
+        <section class="dashboard-welcome">
+
+            <p>BUYER CART</p>
+
+            <h2>My Cart</h2>
+
+            <span>
+                View the products you have added to your shopping cart.
+            </span>
+
+        </section>
+
+
+        <section class="seller-management">
+
+            <div class="management-card">
+
+                <!-- Cart products will appear here -->
+                <div id="cartItems"></div>
+
+                <!-- Cart total -->
+                <div id="cartTotal"></div>
+
+            </div>
+
+        </section>
+
+
+        <br>
+
+        <a href="buyer-products.html">
+            ← Continue Shopping
+        </a>
+
+        <br><br>
+
+        <a href="buyer-dashboard.html">
+            ← Back to Buyer Dashboard
+        </a>
+
+    </main>
+
+
+    <footer class="seller-dashboard-footer">
+
+        <p>
+            © 2026 Bhavadharani Mart · Buyer Centre
+        </p>
+
+    </footer>
+
+
+    <script>
+
+        // ===============================
+        // DISPLAY CART
+        // ===============================
+
+        function displayCart() {
+
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+            // If cart is empty
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <h3>Your Cart is Empty</h3>
+
+                        <p>
+                            You have not added any products to your cart yet.
+                        </p>
+
+                        <br>
+
+                        <button onclick="window.location.href='buyer-products.html'">
+                            Browse Products
+                        </button>
+                    </div>
+                `;
+
+                cartTotal.innerHTML = "";
+
+                return;
+            }
+
+
+            // Clear old content
+            cartItems.innerHTML = "";
+
+            let total = 0;
+
+
+            // Display each product
+            cart.forEach(function(product, index) {
+
+                const itemTotal =
+                    Number(product.price) * Number(product.quantity);
+
+                total = total + itemTotal;
+
+
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+
+                        <h3>${product.name}</h3>
+
+                        <p>
+                            Price: ₹${product.price}
+                        </p>
+
+                        <p>
+                            Quantity: ${product.quantity}
+                        </p>
+
+                        <p>
+                            Product Total: ₹${itemTotal}
+                        </p>
+
+                        <br>
+
+                        <button
+                            class="remove-button"
+                            onclick="removeFromCart(${index})">
+                            Remove
+                        </button>
+
+                    </div>
+                `;
+
+            });
+
+
+            // Display total
+            cartTotal.innerHTML = `
+                <div class="cart-total">
+
+                    <h3>Cart Total: ₹${total}</h3>
+
+                    <br>
+
+                    <button onclick="clearCart()">
+                        Clear Cart
+                    </button>
+
+                </div>
+            `;
+        }
+
+
+        // ===============================
+        // REMOVE ONE PRODUCT
+        // ===============================
+
+        function removeFromCart(index) {
+
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.splice(index, 1);
+
+            localStorage.setItem("cart", JSON.stringify(cart));
+
+            displayCart();
+        }
+
+
+        // ===============================
+        // CLEAR CART
+        // ===============================
+
+        function clearCart() {
+
+            localStorage.removeItem("cart");
+
+            displayCart();
+        }
+
+
+        // ===============================
+        // LOAD CART
+        // ===============================
+
+        displayCart();
+
+    </script>
+
+</body>
+</html>

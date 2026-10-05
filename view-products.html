@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View Products | Bhavadharani Mart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .product-card {
+            padding: 20px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            margin: 6px 0;
+        }
+
+        .product-card button {
+            margin-right: 10px;
+            margin-top: 10px;
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="seller-dashboard">
+
+        <section class="dashboard-welcome">
+
+            <p>PRODUCT MANAGEMENT</p>
+
+            <h2>My Products</h2>
+
+            <span>
+                View and manage your products.
+            </span>
+
+        </section>
+
+
+        <section class="dashboard-cards" id="productsContainer">
+
+            <p>Loading products...</p>
+
+        </section>
+
+
+        <br>
+
+        <a href="seller-dashboard.html">
+            ← Back to Seller Dashboard
+        </a>
+
+    </main>
+
+
+    <script>
+
+        function deleteProduct(id) {
+
+            if (!confirm("Are you sure you want to delete this product?")) {
+                return;
+            }
+
+            fetch(`http://localhost:8080/api/products/${id}`, {
+                method: "DELETE"
+            })
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Delete failed");
+                }
+
+                alert("Product deleted successfully!");
+
+                location.reload();
+
+            })
+            .catch(error => {
+
+                alert("Failed to delete product.");
+
+                console.error(error);
+
+            });
+        }
+
+
+        window.editProduct = function(id) {
+
+            const name = prompt("Enter product name:","");
+            if (name === null) return;
+
+            const price = prompt("Enter product price:");
+            if (price === null) return;
+
+            const quantity = prompt("Enter product quantity:");
+            if (quantity === null) return;
+
+            const description = prompt("Enter product description:");
+            if (description === null) return;
+
+            const updatedProduct = {
+                name: name,
+                price: Number(price),
+                quantity: Number(quantity),
+                description: description
+            };
+
+            fetch(`http://localhost:8080/api/products/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(updatedProduct)
+            })
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Update failed");
+                }
+
+                alert("Product updated successfully!");
+
+                location.reload();
+
+            })
+            .catch(error => {
+
+                alert("Failed to update product.");
+
+                console.error(error);
+
+            });
+        }
+
+
+        fetch("http://localhost:8080/api/products")
+
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Failed to load products");
+                }
+
+                return response.json();
+
+            })
+
+            .then(products => {
+
+                const productsContainer =
+                    document.getElementById("productsContainer");
+
+                productsContainer.innerHTML = "";
+
+                products.forEach(product => {
+
+                    const productCard =
+                        document.createElement("div");
+
+                    productCard.className =
+                        "dashboard-card product-card";
+
+                    productCard.innerHTML = `
+                        <h3>${product.name}</h3>
+
+                        <p>
+                            Price: ₹${product.price}
+                        </p>
+
+                        <p>
+                            Quantity: ${product.quantity}
+                        </p>
+
+                        <p>
+                            Description: ${product.description || ""}
+                        </p>
+
+                        <button onclick="editProduct(${product.id})">
+                            Edit
+                        </button>
+
+                        <button onclick="deleteProduct(${product.id})">
+                            Delete
+                        </button>
+                    `;
+
+                    productsContainer.appendChild(productCard);
+
+                });
+
+            })
+
+            .catch(error => {
+
+                document.getElementById("productsContainer").innerHTML = `
+                    <p class="error-message">
+                        Unable to load products.
+                        Please make sure the Spring Boot server is running.
+                    </p>
+                `;
+
+                console.error(error);
+
+            });
+
+    </script>
+
+</body>
+</html>

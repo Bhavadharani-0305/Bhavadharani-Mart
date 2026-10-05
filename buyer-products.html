@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Buyer Products | Bhavadharani Mart</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        button {
+            background-color: #2f6b4f;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #24543e;
+        }
+
+        #products {
+            display: grid;
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            padding: 20px;
+        }
+
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="seller-dashboard">
+
+        <section class="dashboard-header">
+            <p>BUYER SHOPPING</p>
+
+            <h1>Browse Products</h1>
+
+            <p>
+                Choose your favorite products and add them to your cart.
+            </p>
+        </section>
+
+        <!-- Products from MySQL -->
+        <section class="dashboard-cards" id="products">
+
+            <p>Loading products...</p>
+
+        </section>
+
+        <br>
+
+        <section>
+            <button onclick="window.location.href='cart.html'">
+                View My Cart
+            </button>
+        </section>
+
+        <br>
+
+        <a href="buyer-dashboard.html">
+            ← Back to Buyer Dashboard
+        </a>
+
+    </main>
+
+
+    <script>
+
+        // Load products from Spring Boot API
+        fetch("http://localhost:8080/api/products")
+            .then(response => {
+
+                if (!response.ok) {
+                    throw new Error("Failed to load products");
+                }
+
+                return response.json();
+            })
+
+            .then(products => {
+
+                const productsContainer =
+                    document.getElementById("products");
+
+                productsContainer.innerHTML = "";
+
+                products.forEach(product => {
+
+                    const card = document.createElement("div");
+
+                    card.className = "dashboard-card";
+
+                    card.innerHTML = `
+                        <h2>${product.name}</h2>
+
+                        <h3>₹${product.price}</h3>
+
+                        <p>${product.description || ""}</p>
+
+                        <p>
+                            Available Quantity: ${product.quantity}
+                        </p>
+
+                        <button onclick="addToCart(
+                            '${product.name}',
+                            ${product.price}
+                        )">
+                            Add to Cart
+                        </button>
+                    `;
+
+                    productsContainer.appendChild(card);
+                });
+
+            })
+
+            .catch(error => {
+
+                document.getElementById("products").innerHTML =
+                    `<p class="error-message">
+                        Unable to load products.
+                        Please make sure the Spring Boot server is running.
+                    </p>`;
+
+                console.error(error);
+            });
+
+
+        // Add product to cart
+        function addToCart(productName, price) {
+
+            let cart =
+                JSON.parse(localStorage.getItem("cart")) || [];
+
+            cart.push({
+                name: productName,
+                price: price,
+                quantity: 1
+            });
+
+            localStorage.setItem(
+                "cart",
+                JSON.stringify(cart)
+            );
+
+            alert(productName + " added to your cart!");
+        }
+
+    </script>
+
+</body>
+</html>
