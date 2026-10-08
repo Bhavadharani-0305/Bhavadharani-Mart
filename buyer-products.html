@@ -7,7 +7,6 @@
     <title>Buyer Products | Bhavadharani Mart</title>
 
     <link rel="stylesheet" href="style.css">
-<<<<<<< HEAD
 
     <style>
         button {
@@ -24,47 +23,24 @@
             background-color: #24543e;
         }
 
-        #products {
+        .dashboard-cards {
             display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
         }
 
         .dashboard-card {
             padding: 20px;
         }
-
-        .error-message {
-            color: red;
-            font-weight: bold;
-        }
     </style>
 </head>
 
-=======
-</head>
-
-<style>
-button {
-    background-color: #2f6b4f;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #24543e;
-}
-</style>
-
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 <body>
 
     <main class="seller-dashboard">
 
         <section class="dashboard-header">
+
             <p>BUYER SHOPPING</p>
 
             <h1>Browse Products</h1>
@@ -72,84 +48,96 @@ button:hover {
             <p>
                 Choose your favorite products and add them to your cart.
             </p>
-        </section>
-
-<<<<<<< HEAD
-        <!-- Products from MySQL -->
-        <section class="dashboard-cards" id="products">
-
-            <p>Loading products...</p>
 
         </section>
 
-=======
 
         <section class="dashboard-cards">
 
             <!-- Ice Cream -->
             <div class="dashboard-card">
+
                 <h2>Ice Cream</h2>
 
                 <h3>₹100</h3>
 
                 <p>Fresh and delicious ice cream.</p>
 
-                <p>
-                    Available Quantity: 10
-                </p>
+                <p>Available Quantity: 10</p>
 
                 <button onclick="addToCart('Ice Cream', 100)">
                     Add to Cart
                 </button>
+
             </div>
 
 
             <!-- Chocolate -->
             <div class="dashboard-card">
+
                 <h2>Chocolate</h2>
 
                 <h3>₹80</h3>
 
                 <p>Rich and tasty chocolate.</p>
 
-                <p>
-                    Available Quantity: 20
-                </p>
+                <p>Available Quantity: 20</p>
 
                 <button onclick="addToCart('Chocolate', 80)">
                     Add to Cart
                 </button>
+
             </div>
 
 
             <!-- Milk -->
             <div class="dashboard-card">
+
                 <h2>Milk</h2>
 
                 <h3>₹60</h3>
 
                 <p>Fresh and healthy milk.</p>
 
-                <p>
-                    Available Quantity: 15
-                </p>
+                <p>Available Quantity: 15</p>
 
                 <button onclick="addToCart('Milk', 60)">
                     Add to Cart
                 </button>
+
+            </div>
+
+
+            <!-- Vegetables -->
+            <div class="dashboard-card">
+
+                <h2>Vegetables</h2>
+
+                <h3>₹50</h3>
+
+                <p>Fresh and healthy vegetables.</p>
+
+                <p>Available Quantity: 25</p>
+
+                <button onclick="addToCart('Vegetables', 50)">
+                    Add to Cart
+                </button>
+
             </div>
 
         </section>
 
 
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
         <br>
 
         <section>
+
             <button onclick="window.location.href='cart.html'">
                 View My Cart
             </button>
+
         </section>
+
 
         <br>
 
@@ -161,78 +149,11 @@ button:hover {
 
 
     <script>
-<<<<<<< HEAD
 
-        // Load products from Spring Boot API
-        fetch("http://localhost:8080/api/products")
-            .then(response => {
-
-                if (!response.ok) {
-                    throw new Error("Failed to load products");
-                }
-
-                return response.json();
-            })
-
-            .then(products => {
-
-                const productsContainer =
-                    document.getElementById("products");
-
-                productsContainer.innerHTML = "";
-
-                products.forEach(product => {
-
-                    const card = document.createElement("div");
-
-                    card.className = "dashboard-card";
-
-                    card.innerHTML = `
-                        <h2>${product.name}</h2>
-
-                        <h3>₹${product.price}</h3>
-
-                        <p>${product.description || ""}</p>
-
-                        <p>
-                            Available Quantity: ${product.quantity}
-                        </p>
-
-                        <button onclick="addToCart(
-                            '${product.name}',
-                            ${product.price}
-                        )">
-                            Add to Cart
-                        </button>
-                    `;
-
-                    productsContainer.appendChild(card);
-                });
-
-            })
-
-            .catch(error => {
-
-                document.getElementById("products").innerHTML =
-                    `<p class="error-message">
-                        Unable to load products.
-                        Please make sure the Spring Boot server is running.
-                    </p>`;
-
-                console.error(error);
-            });
-
-
-        // Add product to cart
         function addToCart(productName, price) {
 
             let cart =
                 JSON.parse(localStorage.getItem("cart")) || [];
-=======
-        function addToCart(productName, price) {
-
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 
             cart.push({
                 name: productName,
@@ -240,21 +161,15 @@ button:hover {
                 quantity: 1
             });
 
-<<<<<<< HEAD
             localStorage.setItem(
                 "cart",
                 JSON.stringify(cart)
             );
 
             alert(productName + " added to your cart!");
+
         }
 
-=======
-            localStorage.setItem("cart", JSON.stringify(cart));
-
-            alert(productName + " added to your cart!");
-        }
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
     </script>
 
 </body>
