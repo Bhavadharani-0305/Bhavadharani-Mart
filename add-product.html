@@ -1,73 +1,56 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Add Product | Bhavadharani Mart</title>
-
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
+    <header class="seller-dashboard-header">
+        <h1>Bhavadharani Mart</h1>
+        <p>SELLER CENTRE</p>
+    </header>
 
     <main class="seller-dashboard">
 
-        <section class="dashboard-welcome">
-
-            <p>PRODUCT MANAGEMENT</p>
-
-            <h2>Add New Product</h2>
-
-            <span>
-                Add a new product to your marketplace.
-            </span>
-
-        </section>
+        <h2>Add New Product</h2>
+        <p>Add a new product to your marketplace.</p>
 
         <form id="addProductForm">
 
-            <label>Product Name</label>
-            <input type="text" id="productName" required>
+            <p>
+                <label for="productName">Product Name</label><br>
+                <input type="text" id="productName" required>
+            </p>
 
-            <br><br>
+            <p>
+                <label for="productPrice">Price</label><br>
+                <input type="number" id="productPrice" min="0.01" step="0.01" required>
+            </p>
 
-            <label>Price</label>
-            <input type="number" id="productPrice" required>
+            <p>
+                <label for="productQuantity">Quantity</label><br>
+                <input type="number" id="productQuantity" min="0" required>
+            </p>
 
-            <br><br>
+            <p>
+                <label for="productDescription">Description</label><br>
+                <textarea id="productDescription" placeholder="Enter product description"></textarea>
+            </p>
 
-            <label>Quantity</label>
-            <input type="number" id="productQuantity" required>
-
-            <br><br>
-<<<<<<< HEAD
-            <label>Description</label>
-            <input type="text" id="productDescription" placeholder="Enter product description">
-=======
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c
-
-            <button type="submit">
-                Add Product
-            </button>
+            <button type="submit">Add Product</button>
 
         </form>
 
-        <br>
-
-        <a href="seller-dashboard.html">
-            ← Back to Seller Dashboard
-        </a>
+        <p>
+            <a href="seller-dashboard.html">Back to Seller Dashboard</a>
+        </p>
 
     </main>
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
-<<<<<<< HEAD
 </html>
-=======
-</html> 
->>>>>>> 6847f6e6cc3e04ff8a2c7b96b703855251a6312c

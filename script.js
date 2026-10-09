@@ -152,3 +152,75 @@ if (addProductForm) {
         });
     });
 }
+
+// ===============================
+// SELLER DASHBOARD BUTTONS
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+const addProductButton =
+    document.getElementById("addProductButton");
+
+const viewProductsButton =
+    document.getElementById("viewProductsButton");
+
+const viewOrdersButton =
+    document.getElementById("viewOrdersButton");
+
+const manageProductsButton =
+    document.getElementById("manageProductsButton");
+
+const manageOrdersButton =
+    document.getElementById("manageOrdersButton");
+
+const viewProfileButton =
+    document.getElementById("viewProfileButton");
+
+const sellerLogout =
+    document.getElementById("sellerLogout");
+
+
+if (addProductButton) {
+    addProductButton.onclick = function () {
+        window.location.href = "add-product.html";
+    };
+}
+
+if (viewProductsButton) {
+    viewProductsButton.onclick = function () {
+        window.location.href = "view-products.html";
+    };
+}
+
+if (viewOrdersButton) {
+    viewOrdersButton.onclick = function () {
+        window.location.href = "view-orders.html";
+    };
+}
+
+if (manageProductsButton) {
+    manageProductsButton.onclick = function () {
+        window.location.href = "manage-products.html";
+    };
+}
+
+if (manageOrdersButton) {
+    manageOrdersButton.onclick = function () {
+        window.location.href = "manage-orders.html";
+    };
+}
+
+if (viewProfileButton) {
+    viewProfileButton.onclick = function () {
+        window.location.href = "seller-profile.html";
+    };
+}
+
+if (sellerLogout) {
+    sellerLogout.onclick = function () {
+        window.location.href = "seller-login.html";
+    };
+}
+
+});
